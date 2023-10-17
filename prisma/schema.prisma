@@ -15,3 +15,23 @@ model User {
 
   @@map("users")
 }
+
+
+model Course { 
+  id        String   @id @default(uuid())
+  title     String   @unique
+  synopsis  String   @db.Text
+  takeaways Json     @db.Json
+  imageURL  String   @map("image_url") @db.Text
+  level     CourseLevel   
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("courses")
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
