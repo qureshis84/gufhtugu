@@ -20,7 +20,10 @@ export default class CourseRepository {
   }
 
   findOne(id: string): Promise<Course> {
-    return this.courseRepository.findUniqueOrThrow({ where: { id } });
+    return this.courseRepository.findUniqueOrThrow({
+      where: { id },
+      include: { modules: true },
+    });
   }
 
   create(data: CreateCourseDto): Promise<Course> {
