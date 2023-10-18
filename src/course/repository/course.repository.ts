@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Course, Module } from '@prisma/client';
+import { Course, Lecture, Module } from '@prisma/client';
 import PrismaService from '../../database/database.service';
-import { CreateCourseDto, CreateCourseModuleDto } from '../dto';
+import {
+  CreateCourseDto,
+  CreateCourseModuleDto,
+  CreateLectureDto,
+} from '../dto';
 
 @Injectable()
 export default class CourseRepository {
@@ -15,6 +19,10 @@ export default class CourseRepository {
     return this.prisma.module;
   }
 
+  private get lectureRepository() {
+    return this.prisma.lecture;
+  }
+
   findAll(): Promise<Course[]> {
     return this.courseRepository.findMany();
   }
@@ -22,7 +30,10 @@ export default class CourseRepository {
   findOne(id: string): Promise<Course> {
     return this.courseRepository.findUniqueOrThrow({
       where: { id },
-      include: { modules: true },
+      include: {
+        modules: { include: { lectures: true, _count: true } },
+        _count: true,
+      },
     });
   }
 
@@ -32,5 +43,9 @@ export default class CourseRepository {
 
   createCourseModule(data: CreateCourseModuleDto): Promise<Module> {
     return this.moduleRepository.create({ data });
+  }
+
+  createLecture(data: CreateLectureDto): Promise<Lecture> {
+    return this.lectureRepository.create({ data });
   }
 }

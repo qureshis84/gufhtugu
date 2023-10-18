@@ -1,4 +1,5 @@
 import CreateCourseDto from './create.course.dto';
-import CreateCourseModuleDto from './create.course.module.dto';
+import CreateLectureDto from './create.lecture.dto';
+import CreateCourseModuleDto from './create.module.dto';
 
-export { CreateCourseDto, CreateCourseModuleDto };
+export { CreateCourseDto, CreateCourseModuleDto, CreateLectureDto };

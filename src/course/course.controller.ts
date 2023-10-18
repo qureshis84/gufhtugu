@@ -7,7 +7,11 @@ import {
   Post,
 } from '@nestjs/common';
 import { CourseService } from './course.service';
-import { CreateCourseDto, CreateCourseModuleDto } from './dto';
+import {
+  CreateCourseDto,
+  CreateCourseModuleDto,
+  CreateLectureDto,
+} from './dto';
 
 @Controller('course')
 export class CourseController {
@@ -31,5 +35,10 @@ export class CourseController {
   @Post(`module`)
   createCourseModule(@Body() body: CreateCourseModuleDto) {
     return this.courseService.createCourseModule(body);
+  }
+
+  @Post(`module/lecture`)
+  createCourseLecture(@Body() body: CreateLectureDto) {
+    return this.courseService.createCourseLecture(body);
   }
 }

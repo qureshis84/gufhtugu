@@ -31,18 +31,38 @@ model Course {
 }
 
 model Module {
-  id        String   @id @default(uuid())
-  courseId  String   @map("course_id")
-  title     String   @unique
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  Course    Course   @relation(fields: [courseId], references: [id])
+  id        String    @id @default(uuid())
+  courseId  String    @map("course_id")
+  title     String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  course    Course    @relation(fields: [courseId], references: [id])
+  lectures  Lecture[]
 
   @@map("modules")
+}
+
+model Lecture {
+  id        String      @id @default(uuid())
+  moduleId  String      @map("module_id")
+  title     String      @unique
+  type      LectureType @default(TEXT)
+  preview   Boolean     @default(false)
+  content   String      @db.Text
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  module    Module      @relation(fields: [moduleId], references: [id])
+
+  @@map("lectures")
 }
 
 enum CourseLevel {
   BEGINNER
   INTERMEDIATE
   ADVANCED
+}
+
+enum LectureType {
+  TEXT
+  VIDEO
 }
