@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Course } from '@prisma/client';
+import { Course, Module } from '@prisma/client';
 import PrismaService from '../../database/database.service';
-import { CreateCourseDto } from '../dto';
+import { CreateCourseDto, CreateCourseModuleDto } from '../dto';
 
 @Injectable()
 export default class CourseRepository {
@@ -9,6 +9,10 @@ export default class CourseRepository {
 
   private get courseRepository() {
     return this.prisma.course;
+  }
+
+  private get moduleRepository() {
+    return this.prisma.module;
   }
 
   findAll(): Promise<Course[]> {
@@ -21,5 +25,9 @@ export default class CourseRepository {
 
   create(data: CreateCourseDto): Promise<Course> {
     return this.courseRepository.create({ data });
+  }
+
+  createCourseModule(data: CreateCourseModuleDto): Promise<Module> {
+    return this.moduleRepository.create({ data });
   }
 }

@@ -16,18 +16,29 @@ model User {
   @@map("users")
 }
 
-
-model Course { 
-  id        String   @id @default(uuid())
-  title     String   @unique
-  synopsis  String   @db.Text
-  takeaways Json     @db.Json
-  imageURL  String   @map("image_url") @db.Text
-  level     CourseLevel   
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+model Course {
+  id        String      @id @default(uuid())
+  title     String      @unique
+  synopsis  String      @db.Text
+  takeaways Json        @db.Json
+  imageURL  String      @map("image_url") @db.Text
+  level     CourseLevel
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  modules   Module[]
 
   @@map("courses")
+}
+
+model Module {
+  id        String   @id @default(uuid())
+  courseId  String   @map("course_id")
+  title     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  Course    Course   @relation(fields: [courseId], references: [id])
+
+  @@map("modules")
 }
 
 enum CourseLevel {
