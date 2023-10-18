@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "ae7d11c0-7396-42a6-865b-eebb187f124c",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23158605",
+		"_collection_link": "https://www.postman.com/umerukn/workspace/yts-clone/collection/23158605-ae7d11c0-7396-42a6-865b-eebb187f124c?action=share&source=collection_link&creator=23158605"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Add New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"umer.nas@outlook.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/user",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_LOCAL}}/user",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_LOCAL}}/user/c098fb18-2eac-4748-a931-4b9fae92328c",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"user",
+								"c098fb18-2eac-4748-a931-4b9fae92328c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Add New Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Grokking Coding Interview Patterns in Python\",\r\n    \"imageURL\": \"https://www.educative.io/cdn-cgi/image/format=auto,width=1200,quality=75/v2api/collection/10370001/5500262945128448/image/5893838839480320\",\r\n    \"level\": \"BEGINNER\",\r\n    \"synopsis\": \"This course teaches you the underlying patterns behind common coding interview questions. By learning these essential patterns, you will be able to unpack and answer any problem the right way — just by assessing the problem statement. This approach was created by FAANG hiring managers to help you prepare for the typical rounds of interviews at major tech companies like Apple, Google, Meta, Microsoft, and Amazon.\",\r\n    \"takeaways\": [\"Practice your skills in a hands-on, setup-free coding environment\", \"Learn to efficiently evaluate the tradeoffs between time and space complexity in different solutions\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/course",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Course Module",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sliding Window\",\r\n    \"courseId\": \"3278cf42-fc53-4445-b777-1501d46b6db2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/course/module",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"course",
+								"module"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Course Lecture",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sliding Window\",\r\n    \"moduleId\": \"3217a53d-75ca-4bd6-bf82-cc435125e575\",\r\n    \"content\": \"Big Big Paragraph\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/course/module/lecture",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"course",
+								"module",
+								"lecture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/course",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_LOCAL}}/course/3278cf42-fc53-4445-b777-1501d46b6db2",
+							"host": [
+								"{{BASE_LOCAL}}"
+							],
+							"path": [
+								"course",
+								"3278cf42-fc53-4445-b777-1501d46b6db2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_LOCAL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "BASE_LIVE",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
